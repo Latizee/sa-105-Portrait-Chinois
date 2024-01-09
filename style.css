@@ -1,0 +1,402 @@
+                                                    /* INTRODUCTION CSS */
+
+*,
+::before,                                                               /* réinitialiser les paramétres du navigateur */
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+                                                               /* FONT */
+
+@font-face {                                                            /* code pour instaurer la typo proprement */
+	font-family: charlieUltra;
+	src: url(fonts/charlie-display-ultra.woff2) format("woff2"),
+       url(fonts/charlie-display-ultra.woff)  format("woff") ;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: GreatSejagad;
+	src: url(fonts/Great_Sejagad.woff2) format("woff2"),                  /* code pour instaurer la typo proprement */
+       url(fonts/Great_Sejagad.woff)  format("woff") ;
+  font-weight: 900;
+  font-style: normal;
+}
+
+                                                    /* Background Page */
+
+body {                                                                  /* corps de la page */ 
+  background-image: url(img/FOND8.jpg);                                 /* applique une image de fond à la page */
+  background-size: cover;                                               /* applique l'image sur l'ensemble de la page */
+  background-repeat: no-repeat;                                         /* ne duplique pas l'image dans le background */
+  background-attachment: fixed;                                         /* fixe l'image dans le navigateur (la rend immobile) */
+  background-position: center;                                          /* centre l'image dans le navigateur */
+  cursor: url(img/avoin-cursor-vert.png), auto;                         /* modifie la souris du navigateur */
+} 
+
+                                                              /* TEXTE */
+
+h1 {                                                                    /* titre de niveaux 1 */
+  color: #45f882;                                                     /* change la couleur du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  margin-bottom: 20px;                                                  /* crée un espace en bas du texte pour éviter de coller les prochains élement */
+  font-family: GreatSejagad;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 7rem;                                                      /* taille du texte */
+  animation-duration: 3s;                                               /* durée de l'animation */
+  animation-name: slidein;                                              /* animation via le code @keyframes */
+}
+
+h2 {                                                                    /* titre de niveaux 2 */
+  color: #45f882;                                                     /* change la couleur du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  font-family: charlieUltra;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 2.5rem;                                                    /* taille du texte */
+  letter-spacing: 1.1px;                                                /* espacement entre les lettres du texte */
+}
+
+h3 {                                                                    /* titre de niveaux 3 */
+  color: #ffff;                                                       /* change la couleur du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  font-family: charlieUltra;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 1.6rem;                                                    /* taille du texte */
+  letter-spacing: 1.2px;                                                /* espacement entre les lettres du texte */
+}
+
+h4{                                                                     /* titre de niveaux 4 */
+  color: #ffff;                                                       /* change la couleur du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  font-family: charlieUltra;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 0.93rem;                                                   /* taille du texte */
+  letter-spacing: 1.2px;                                                /* espacement entre les lettres du texte */
+}
+
+                                                    /* CARTE ( THEME ) */
+
+.card-list {                                                            /* carte mise en forme */
+  list-style-type: none;                                                /* enlever la forme de liste pour un rendue plus naturelle */
+  max-width: 1100px;                                                    /* largeur max des cartes sur le  navigateur */
+  margin: 0 auto;                                                       /* enlever les possibles espacement entre les cartes */
+  display: grid;                                                        /* créer des mises en page en divisant l'espace d'affichage en régions utilisables */
+  grid-template-columns: repeat(auto-fill, 225px);
+  justify-content: center;
+  gap: 35px;                                                            /* dimenssionne l'écart entre les cartes */
+}
+.card {                                                                 /* customise l' intérieure des cartes */ 
+  position: relative;                                                   /* positionne les cartes */
+  height: 275px;                                                        /* définit la hauteur de la carte */
+  color: #45f882;                                                     /* change la couleur de la carte */
+  background-color: #222122;                                          /* change la couleur du fond */
+  border-radius: 5px;                                                   /* arrondit les angles */
+}
+
+.clipped-img {                                                          /* effet de zoom sur les images des cartes */
+  position: absolute;                                                   /* positionne les élements */
+  width: 100%;                                                          /* définit la largeur */
+  height: 100%;                                                         /* définit la hauteur */
+  object-fit: cover;                                                    /* permet de ne pas compresser l'image dans la carte ( quitte à en couper un bout ( rogner) ) */
+  border-radius: 5px;                                                   /* arrondit les angles */
+  clip-path: circle(100%);                                              /* effet du cercle */
+  transition: clip-path 0.4s ease-out;                                  /* transition du cercle */
+  
+}
+
+.card:hover .clipped-img {                                              /* activation de l'effet aux passage de la souris */
+  clip-path: circle(80px at 50% 90px);                                  /* effet de la souris */
+}
+.content {                                                              /* mise en forme du texte dans les cartes  */
+  height: 100%;                                                         /* définit la hauteur */
+  display: flex;                                                        /* permet de dimensionner plusieur objets dans un élement */
+  flex-direction: column;
+  padding: 0px 20px 16px;                                               /* correspond à l'emplacement de mes objets */
+}
+.card-location {                                                        /* texte dans les cartes */
+  margin-top: auto;
+  font-family: GreatSejagad;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 2rem;                                                      /* taille du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  letter-spacing: 1px;                                                  /* espacement entre les lettres du texte */
+  margin-bottom: 10px;                                                  /* crée un espace en bas du texte pour éviter de coller les prochains élement */
+  color: #45f882;                                                     /* change la couleur du texte de la carte */
+}
+
+                                                    /* Bouton " ICON " */
+
+.actions-container {                                                    /* mise en forme des logo dans les cartes */
+  display: flex;                                                        /* permet de dimensionner plusieur objets dans un élement */
+  justify-content: center;                                              /* centre les élements dans les cartes */
+}
+
+
+.action-btn {                                                           /* logo dans les cartes */
+  width: 25px;                                                          /* définit la largeur */ 
+  height: 25px;                                                         /* définit la hauteur */
+  border: none;                                                         /* enleve la bordure des objet */
+  background: transparent;                                              /* enleve la transparence des image */
+}
+
+.action-btn img {                                                       /* range les images dans les cartes */
+  width: 75%;                                                           /* définit la largeur */
+}
+
+                                                         /* Formulaire */
+
+form {                                                                  /* balise de création du formulaire */
+  width: 50%;                                                           /* définit la largeur */
+  display: flex;                                                        /* permet de dimensionner plusieur objets dans un élement */
+  flex-direction: column;
+  border-radius: 50px;                                                  /* arrondit les angles */
+  border: solid #45f882 6px;                                          /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+  padding: 20px;                                                        /* crée un espacement qui décolle l'objet de sa boite */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  animation: float 3s infinite;                                         /* animation via le code @keyframes */
+  backdrop-filter: blur(200px);                                         /* rajoute un arriére plan flouté à l'élément */
+  text-shadow: #bc13fe 1px 0px 3px;                                   /* crée une ombre portée sur le texte */
+}
+
+input, textarea {                                                       /* texte de préremplissage dans le formulaire */
+  padding: 0.5rem;                                                      /* crée un espacement qui décolle l'objet de sa boite */
+  border: 2px solid #27393B;                                          /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+  border-radius: 20px;                                                  /* arrondit les angles */                                                   
+  font-family: charlieUltra;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  font-size: 1.5rem;                                                    /* taille du texte */
+}
+
+#VALIDER {                                                              /* bouton VALIDER du formulaire */
+  padding: 1rem;                                                        /* crée un espacement qui décolle l'objet de sa boite */
+  color: #222122;                                                     /* change la couleur du bouton */
+  font-size: 2rem;                                                      /* taille du texte */
+  text-align: center;                                                   /* centre le texte aux millieux de la page */
+  letter-spacing: 1.1px;                                                /* espacement entre les lettres du texte */
+  background-color: #45f882;                                          /* change la couleur de l'arriére plan */
+  border-radius: 50px;                                                  /* arrondit les angles */
+  transition: all 0.5s ease-out;                                        /* transition pour un effet plus smooth */
+}
+
+#VALIDER:hover {                                                        /* effet aprés passage de la souris pour le bouton valider */
+	background-color: #bc13fe;                                          /* change la couleur de l'arriére plan */
+  cursor: url(img/avoin-cursor-vert.png), auto;                         /* modifie la souris du navigateur */
+}
+
+                                         /* bouton qui remonte en haut */
+
+.return-haut {                                                          /* possitionement du bouton qui remonte en haut */
+  position: fixed;                                                      /* possitionnement du du bouton */
+  bottom: 20px;                                                         /* déplacement du positionement du bouton */
+  right: 20px;                                                          /* déplacement du positionement du bouton */
+  cursor: pointer;                                                      /* métamorphose du bouton pour un aspect plus reconnaissable au moment du clique */
+}
+
+.return-haut img {                                                      /* indique la taille du bouton */
+  width: 75px;                                                          /* définit la largeur */
+  height: 75px;	                                                        /* définit la hauteur */
+}
+
+.return-haut:hover {                                                    /* effet aprés passage de la souris sur le bourton */              
+animation: shake 0.5s infinite;                                         /* animation via le code @keyframes */
+cursor: url(img/avoin-cursor-vert.png), auto;                           /* modifie la souris du navigateur */
+}
+
+                                                      /* MentionLegale */
+
+.modal {                                                                /* box qui encadre la section texte des modalités */
+  display: none;                                                        /* permet de ne pas se préaucoper du code et d'afficher les mention légales par dessus de la page */
+  position: fixed;                                                      /* positionement du block */
+  z-index: 1;                                                           /* change la disposition des élément pour donner un ordre de superposition des élements */
+  left: 0;                                                              /* possitionement */
+  top: 0;                                                               /* possitionement */
+  width: 100%;                                                          /* définit la largeur */
+  height: 100%;                                                         /* définit la hauteur */
+  overflow: scroll;                                                     /* crée une scrollbar pour aide l'utilisateur à naviguer */
+}
+
+.modal-content {                                                        /* l'intérieur de la boite des mention légale */
+  position: absolute;                                                   /* positionement du block */ 
+  top: 50%;                                                             /* possitionement */
+  left: 50%;                                                            /* possitionement */
+  transform: translate(-50%, -50%);
+  padding: 20px;                                                        /* crée un espacement qui décolle l'objet de sa boite */
+  width: 80%;                                                           /* définit la largeur */
+  height: 100%;                                                         /* définit la hauteur */
+  backdrop-filter: blur(20px);                                          /* rajoute un arriére plan flouté à l'élément */
+  border-radius: 20px;                                                  /* arrondit les angles */
+  border: #45f882 solid 3px;                                          /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+}
+
+                                          /* Bouton fermé dans fenetre */
+
+.close {                                                                /* bouton pour fermé la fenetre de mention légale */
+  color: #45f882;                                                     /* change la couleur du texte de la carte */
+  float: right;                                                         /* déplace l'élement à droit de la boite */
+  font-size: 4rem;                                                      /* taille de l'image */
+}
+
+.close:hover {                                                          /* effet aprés passage de la souris sur le bourton */ 
+  animation: shake 1s infinite;                                         /* animation via le code @keyframes */
+  cursor: pointer;                                                      /* métamorphose du bouton pour un aspect plus reconnaissable au moment du clique */
+  cursor: url(img/avoin-cursor-vert.png), auto;                         /* modifie la souris du navigateur */
+}
+
+.fixed-button {                                                         /* custom du bouton 'Mention légale' */
+  position: fixed;                                                      /* positionement du block */
+  bottom: 20px;                                                         /* possitionement */
+  left: 20px;                                                           /* possitionement */
+  padding: 10px;                                                        /* crée un espacement qui décolle l'objet de sa boite */
+  font-family: charlieUltra;                                            /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+  background-color: #45f882;                                          /* change la couleur de l'arriére plan */
+  color: #222122;                                                     /* change la couleur du texte de la carte */
+  border: none;                                                         /* enleve la bordure des objet */
+  border-radius: 20px;                                                  /* arrondit les angles */
+}
+
+.fixed-button:hover {                                                   /* effet aprés passage de la souris sur le bourton */ 
+  animation: shake 1s infinite;                                         /* animation via le code @keyframes */
+}
+
+                          /* Bouton Sommaire qui renvoie à la partie 2 */
+
+.Push {                                                                 /* emplacement du bouton */
+    text-align: center;                                                 /* centrer le bouton */
+}
+
+.Push button {                                                          /* custom bouton */
+    height: 50px;                                                       /* définit la hauteur */
+    width: 150px;                                                       /* définit la largeur */
+    border-radius: 50px;                                                /* arrondit les angles */
+    font-size: 1.3rem;                                                  /* taille du texte */
+    padding: 0 10px;                                                    /* crée un espacement qui décolle l'objet de sa boite */
+    transition: all 0.3s ease;                                          /* animation via le code @keyframes */
+    background: none;                                                   /* enleve le background */
+    font-family: charlieUltra;                                          /* applique la typo sélectionner via le code ci-dessus (@font-face) */
+    border: 3px solid #45f882;                                        /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+    color: #45f882;                                                   /* change la couleur du texte de la carte */
+	  letter-spacing: 2px;                                                /* espacement entre les lettres du texte */
+}
+
+.Push button:hover {                                                    /* effet aprés passage de la souris sur le bourton */
+    background: #45f882;                                              /* change la couleur du background */
+    border: 3px solid #45f882;                                        /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+    color: #0e0e16;                                                   /* change la couleur du texte de la carte */
+}
+
+                                                               /* lien */
+
+a {
+  color: #45f882;                                                     /* change la couleur du texte de la carte */
+}
+
+                         /* Partie 2 */ /* le css pour les elements JS */
+
+.img-desc {                                                             /* balise pour afficher l'image dans la partie 2 */  
+  width: 40%;                                                           /* définit la largeur */
+  height: 70%;                                                          /* définit la hauteur */
+  background-repeat: no-repeat;                                         /* permet de ne pas dupliquer */
+  background-size: cover;                                               /* permet de mettre une image complete dans le cadre quit à rogner l'image */
+  background-position: center;                                          /* centre l'image dans le cadre */ 
+  border-radius: 50px;                                                  /* arrondit les angles */
+  animation: float 3s infinite;                                         /* animation via le code @keyframes */
+}
+
+article {                                                               /* crée une bordure sur le texte */
+  border: double #3E7F54 6px;                                         /* crée une bordure autour de l'objet selectionner pour un aspect viseul ou pratique */
+  padding: 30px;                                                        /* crée un espacement qui décolle l'objet de sa boite */
+  width: 50%;                                                           /* définit la largeur */
+  display: flex;                                                        /* permet de dimensionner plusieur objets dans un élement */
+  flex-direction: column;
+  border-radius: 30px;                                                  /* arrondit les angles */
+}
+  
+section {                                                               /* permet d'afficher les images */
+  color: #45f882;                                                     /* change la couleur du texte de la carte */
+  margin: 0 auto;
+  height: 100vh;                                                        /* définit la hauteur */
+  width: 80%;                                                           /* définit la largeur */
+  gap: 10rem;                                                           /* dimenssionne l'écart entre les sections */
+  text-shadow: #45f882 0px 0px 2px;                                   /* crée une ombre portée sur le texte */
+  display: flex;                                                        /* permet de dimensionner plusieur objets dans un élement */
+  justify-content: center;
+  align-items: center;                                                  /* centre le texte dans la section */
+}
+
+.bloc {
+  background: #27393B;                                                /* change la couleur du background */ 
+}
+
+                                                          /* animation */
+                                                                        /* déplacement de droite à gauche */
+
+@keyframes slidein {
+  from {
+      margin-left: 100%;
+      width: 300%;
+  }
+
+  to {
+      margin-left: 0%;
+      width: 100%;
+  }
+}
+
+                                                                        /* déplacement de gauche à droite */
+
+@keyframes slideon {
+  from {
+      margin-right: 100%;
+      width: 300%;
+  }
+
+  to {
+      margin-right: 0%;
+      width: 100%;
+  }
+}
+
+                                                                        /* mouvement horizontal sur les images de la partie 2 */
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px #45f882;
+    transform: translateX(0px);
+}
+50% {
+    box-shadow: 0 25px 15px 0px #45f882;
+    transform: translateX(-20px);
+}
+100% {
+    box-shadow: 0 5px 15px 0px #45f882;
+    transform: translateX(0px);
+}
+}
+
+                                                                        /* Tremblement de terre animation pour le bouton return-haut */
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+                                                                       /* scrollbar transform */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent,#45f882);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent,#bc13fe);
+}
